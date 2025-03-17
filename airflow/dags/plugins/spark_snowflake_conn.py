@@ -56,8 +56,23 @@ def create_snowflake_table(sql):
 
 def write_snowflake_spark_dataframe(table_name, df):
 
-    df.show()
+    snowflake_opts = snowflake_options.copy()
 
-    df.write.format("snowflake").options(**snowflake_options).option(
+    if table_name in ["spotify_genre_count", "artist_genre_count"]:
+        snowflake_opts["sfSchema"] = "ANALYTICS"
+
+    df.write.format("snowflake").options(**snowflake_opts).option(
         "dbtable", f"{table_name}"
     ).mode("append").save()
+
+
+def read_snowflake_spark_dataframe(spark, table_name):
+
+    df = (
+        spark.read.format("snowflake")
+        .options(**snowflake_options)
+        .option("dbtable", table_name)
+        .load()
+    )
+
+    return df
