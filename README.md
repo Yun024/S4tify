@@ -57,18 +57,7 @@
 <br>
 
 ### Apache Kafka & Eventsim
-![image](https://github.com/user-attachments/assets/203e3723-0cf6-4dde-89a9-2c6922b9b342)
-#### 1. Kafka 자동 토픽 생성 기능 비활성화(kafka1)
-- 자동 토픽 생성을 비활성화하여, 명시적으로 토픽을 생성하도록 변경
-- 보안 및 운영 관리를 강화할 수 있음
-#### 2. Key/Value Convertor 변경(kafka_connect)
-- eventsim에서 생성하는 데이터가 JSON이기 때문에 내용변경
-- Avro 대신 Json으로 메시지 직렬화/역직렬화 수행
-#### 3. 플러그인 추가(kafka_connect)
-- 데이터를 AWS S3에 저장하는 기능 추가
-- Avro 데이터 변환 및 Schema Registry 연동 지원하도록 확장
-#### 4. 볼륨 마운트 추가(kafka_connect)
-- Avro Schema를 별도 관리 가능하도록 추가 볼륨 설정
+![image](https://github.com/user-attachments/assets/8a0309f6-411c-4ead-b818-f23b1824e104)
 
 ## AWS 구성
 ### EC2
@@ -87,14 +76,6 @@
 - **Python 환경 설정** :Python 3.10 환경을 자동으로 설정
 - **코드 포맷팅 수행** : black, isort, autopop8을 실행하여 코드스타일 정리
 - **자동 커밋&푸시** : 변경 사항이 있을 경우 PR 브랜치에 자동 커밋 & 푸시
-
-#### 기대효과
-- 코드 스타일의 일관성 유지
-  + 불필요한 코드 스타일 논쟁을 줄이고 가독성을 높임
-- 코드 리뷰의 효율성 향상
-  + PR 리뷰 시 코드 스타일보다 로직과 기능 검토에 집중할 수 있음
-- 개발 생산성 증가
-  + 코드 스타일 규칙을 지키지 않아 발생하는 시간을 절약할 수 있음
 
 # 4. 데이터 파이프라인
 ## Bronze Medallion
@@ -305,7 +286,7 @@
 
 #### 데이터 활용성 및 서비스 연계 확대
 + 현재는 Snowflake에 적재된 데이터를 SQL 기반으로만 분석 가능
-+ 이후에는 **BI 도구(Superset, Power BI 등)**를 연계하여 대시보드를 구축
++ 이후에는 **BI 도구(Superset, Power BI 등)** 를 연계하여 대시보드를 구축
 + 외부 연동을 위한 API 엔드포인트 제공을 통해 다른 서비스와의 연계 가능성을 확대할 필요가 있음
 
 #### 대용량 데이터 환경에 대한 테스트 및 최적화
